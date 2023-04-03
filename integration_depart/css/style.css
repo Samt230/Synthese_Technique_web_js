@@ -1,0 +1,130 @@
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  background-image: url("../image/41314.jpg");
+  background-size: 250px;
+  margin: 0px;
+}
+
+#app {
+  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 0px 105px;
+  min-height: 100vh;
+}
+#app[v-cloak] {
+  opacity: 0;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 490px;
+  border-top: 1px solid #555;
+  border-left: 1px solid #555;
+  margin-top: 50px;
+}
+.calendar .day {
+  box-sizing: border-box;
+  width: 70px;
+  height: 70px;
+  border-right: 1px solid #555;
+  border-bottom: 1px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.calendar .day.has-shows {
+  color: rgb(25, 138, 25);
+  font-weight: normal;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.calendar .day.has-shows:hover {
+  background-color: rgb(226, 238, 226);
+}
+.calendar .day.selected {
+  border: 3px solid red;
+  color: red;
+}
+
+.selected-infos {
+  width: 500px;
+}
+.selected-infos h2 {
+  text-align: center;
+  font-size: 34px;
+}
+.selected-infos .empty {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+  margin-top: 50px;
+}
+.selected-infos .shows {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.selected-infos .shows .show {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.selected-infos .shows .show .title {
+  font-size: 24px;
+  font-weight: 300;
+}
+.selected-infos .shows .show .speaker {
+  font-size: 18px;
+  font-weight: 300;
+}
+.selected-infos .shows .show .location {
+  border-bottom: 1px solid #888;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.selected-infos .shows .show .description {
+  display: flex;
+}
+.selected-infos .shows .show .description div {
+  line-height: 1.5em;
+}
+.selected-infos .shows .show .book-bt {
+  margin-top: 10px;
+  padding: 10px;
+  display: inline-block;
+  background-color: rgb(138, 236, 138);
+  border-radius: 5px;
+  border: 1px solid rgb(86, 165, 86);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.selected-infos .shows .show .book-bt:hover {
+  background-color: rgb(175, 243, 175);
+  border-color: rgb(175, 243, 175);
+}
+.selected-infos .shows .show .book-bt.disabled {
+  background-color: #EEE;
+  color: #888;
+  cursor: default;
+  border: none;
+}
+.selected-infos #message {
+  visibility: hidden;
+}
+.selected-infos #message.indisponible {
+  position: fixed;
+  top: 50%;
+  visibility: visible;
+}/*# sourceMappingURL=style.css.map */

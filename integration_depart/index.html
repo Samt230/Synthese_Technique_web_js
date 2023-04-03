@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectacles</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/paypal.css">
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+
+        <div class="calendar">
+
+            <div class="videDebut" v-for="day in calendrier.blank_starting_days">
+                <div class="day"></div>
+            </div>
+
+            <div v-for="day in nbJours">
+                <div class="day" :class="{selected:day.date==jourActuel},{'has-shows':shows[day.date-1]!=0}"
+                    @click="select(day,day.date_unix_time)">{{day.date}}
+                </div>
+            </div>
+
+            <div class="videFin" v-for="day in calendrier.blank_ending_days">
+                <div class="day"></div>
+            </div>
+
+        </div>
+
+        <!-- Lorsqu'une journée est sélectionnée -->
+        <div class="selected-infos" v-if="calendrier.length != 0">
+            <h2>{{jourActuel}} {{moisActuel}} {{annee}}</h2>
+            <!-- Si aucune représentation est présente pour cette journée -->
+            <div v-for="show in dailyShows">
+                <div v-if="show">
+                    <!-- S'il y a des représentations -->
+                    <div class="shows">
+
+                        <!-- Répétition pour chaque représentation -->
+                        <div class="show">
+
+                            <div class="title">{{show.title}}</div>
+                            <div class="speaker">{{show.speaker}}</div>
+                            <div class="location">{{show.location}}</div>
+                            <div class="description">{{show.description}} </div>
+
+                            <div>
+                                <div class="book-bt" @click="ajouterProduit(show)">
+                                    Réserver</div>
+                                {{show.total_seats_left-(panier[show.id]||0)}} places restantes
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="shows[jourActuel-1].length == 0" class="empty">Aucune représentation</div>
+            <div id="message" class="message" :class="indisponible">Aucune places restantes pour cet événement</div>
+        </div>
+
+        <div id="cart-toggle-bt" @click="panier_est_ouvert = true">🛒</div>
+
+        <!-- panier -->
+        <div id="cart-panel" :class="{open: panier_est_ouvert}">
+            <h2>Panier</h2>
+
+            <div class="empty-bt" @click="viderPanier()">
+                Vider le panier
+            </div>
+
+            <div class="items">
+
+                <div class="item" v-for="produit in produits">
+                    <div class="remove" @click="enleverProduit(getProduit(produit.id))">x</div>
+                    <div class="name">{{produit.title}}</div>
+                    <div class="quantity"><input type="number" class="input" min="1" :max="produit.total_seats_left"
+                            v-model="panier[produit.id]" @click="actualisePlaces(panier[produit.id],produit)">
+                    </div>
+                    <div class="price"></div>
+                </div>
+
+                <div class="item total">
+                    <div class="name">Total</div>
+                    <div class="price">{{getPanierTotal().toFixed(2)}}</div>
+                    <div class="price">{{(getPanierTotal()*1.149).toFixed(2)}}</div>
+                </div>
+
+                <div id="paypal-button-container" :class="actif"></div>
+
+            </div>
+
+            <div class="message success" v-if="message == true">
+                Votre commande est complété.
+            </div>
+
+            <div class="message" v-if="message == undefined">
+                Une erreur est survenue , réessayez plus tard.
+            </div>
+
+            <div class="bt-close" @click="panier_est_ouvert = false">Fermer</div>
+        </div>
+    </div>
+
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Ab1B6QPVTldsAdp5TMypbJ33_GcAhBwCMN3ky3hZKiv6m9MUZ7D3A0c2XydAQTfKtZRsavmoPEMbugO6&currency=CAD"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>

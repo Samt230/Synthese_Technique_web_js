@@ -1,0 +1,234 @@
+body div#paypal-button-container {
+    position: relative;
+    bottom: -100%;
+}
+
+body div.message {
+    text-align: center;
+    margin: 50px 0;
+    padding: 20px;
+    background-color: rgb(255, 105, 105);
+}
+
+body div.message.success {
+background-color: rgb(98, 180, 98);
+}
+
+#app {
+    transition: opacity 0.3s ease;
+}
+
+#app[v-cloak] {
+    opacity: 0;
+}
+
+main {
+    box-sizing: border-box;
+    width: 80%;
+    min-width: 320px;
+    margin: 0px auto;
+    background-color: #fff;
+    overflow: auto;
+    padding: 30px 50px;
+    min-height: 100vh;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
+}
+
+main h1 {
+    border-bottom: 1px solid #c2c2c2;
+    padding-bottom: 5px;
+    font-weight: normal;
+}
+
+main .products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main .products>div {
+    box-sizing: border-box;
+    position: relative;
+    width: calc(33.3333333333% - 30px);
+    max-width: 250px;
+    min-width: 200px;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 10px;
+    padding: 15px 25px;
+    border: 1px solid #c2c2c2;
+    color: #999;
+}
+
+main .products>div:hover {
+    border-color: #333;
+}
+
+main .products>div.actif {
+    color: #333;
+}
+
+main .products>div.actif .name {
+    font-weight: bold;
+}
+
+main .products>div h3.name {
+    font-weight: normal;
+    margin: 0px;
+}
+
+main .products>div .quantity {
+    padding-top: 5px;
+    color: #999;
+    height: 1em;
+}
+
+main .products>div .remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid #c2c2c2;
+}
+
+main .products>div .remove:hover {
+    border-color: #333;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+#cart-toggle-bt {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#cart-toggle-bt:hover {
+    background-color: #333;
+}
+
+#cart-panel {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 350px;
+    height: 100vh;
+    padding-top: 50px;
+    background-color: #f5f5f5;
+    border-left: 1px solid #DDD;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1333333333);
+}
+
+#cart-panel.open {
+    transform: translateX(0%);
+}
+
+#cart-panel .bt-close {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#cart-panel .bt-close:hover {
+    color: #666;
+}
+
+#cart-panel h2 {
+    text-align: center;
+    font-weight: normal;
+}
+
+#cart-panel .items .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    border-bottom: 1px solid #CCC;
+}
+
+#cart-panel .items .item:first-child {
+    border-top: 1px solid #CCC;
+}
+
+#cart-panel .items .item.total {
+    font-weight: bold;
+    border: none;
+}
+
+#cart-panel .items .item .remove {
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid #c2c2c2;
+}
+
+#cart-panel .items .item .remove:hover {
+    border-color: #333;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+#cart-panel .items .item .name {
+    width: 150px;
+}
+
+#cart-panel .items .item .quantity input {
+    width: 40px;
+    text-align: center;
+    margin: 0px 5px;
+}
+
+#cart-panel .items .item .price {
+    width: 50px;
+    font-weight: bold;
+}
+
+#cart-panel .vide {
+    text-align: center;
+    margin-top: 50px;
+    color: #999;
+}
+
+#cart-panel .empty-bt {
+    background-color: rgb(228, 84, 84);
+    border-radius: 3px;
+    margin: 30px 70px 30px 70px;
+    text-align: center;
+    padding: 10px 0px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#cart-panel .empty-bt:hover {
+    background-color: rgb(160, 41, 41);
+}
+
+#paypal-button-container{
+    visibility: hidden;
+}
+
+#paypal-button-container.actif{
+    visibility: visible;
+}
+/*# sourceMappingURL=style.css.map */
